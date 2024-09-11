@@ -1,0 +1,56 @@
+#include<stdio.h>
+void fun(int original[],int dubli[],int start,int end)
+{
+    int a=original[0];
+    int temp;
+   
+    if(start==end+1)
+    {
+        return;
+    }
+      for(int i=0;i<=end;i++)
+        {
+            printf("%d ",dubli[i]);
+            
+        }
+        printf("\n");
+    
+    for(int i=1;i<end;i++)
+    {
+        for(int j=i;j<end;j++)
+        {
+                temp=dubli[i];
+                dubli[i]=dubli[j+1];
+                dubli[j+1]=temp;
+                for(int k=0;k<4;k++)
+                {
+                    
+                    printf("%d ",dubli[k]);
+                    
+                }
+                printf("\n");
+                temp=dubli[i];
+                dubli[i]=dubli[j+1];
+                dubli[j+1]=temp;
+                
+        }
+    }
+    for(int i=0;i<=end;i++)
+    {
+        dubli[i]=original[i];
+    }
+    
+    dubli[0]=original[start+1];
+    dubli[start+1]=a;
+    fun(original,dubli,start+1,end);
+    
+}
+void main()
+{
+    int arr[]={1,2,3,4};
+    int start=0;
+    int dupli[]={1,2,3,4};
+
+    int e=3;
+    fun(arr,dupli,start,e);
+}
